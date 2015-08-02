@@ -1,0 +1,24 @@
+{
+  "name": "switchnplay",
+  "version": "0.0.1",
+  "description": "Game exchange full stack app / project GA 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wdi",
+    "GA"
+  ],
+  "author": "Raph",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.4",
+    "handlebars": "^3.0.3",
+    "hapi": "^8.8.1",
+    "hapi-mongodb": "^3.0.0",
+    "joi": "^6.6.1",
+    "path": "^0.11.14",
+    "yar": "^3.0.3"
+  }
+}
