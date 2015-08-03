@@ -3,7 +3,7 @@ var Bcrypt = require('bcrypt');
 //definition
 exports.register = function(server, options, next){
   server.route([
-  {
+  {//GET
     method:'GET',
     path:'/users',
     handler: function(request,reply){
@@ -17,7 +17,7 @@ exports.register = function(server, options, next){
       });
     }//end handler GET
   },
-  {
+  {//POST
     method:'POST',
     path:'/users',
     config: {
@@ -56,7 +56,6 @@ exports.register = function(server, options, next){
       }
     }
   }
-
   ]);
 
   next();
