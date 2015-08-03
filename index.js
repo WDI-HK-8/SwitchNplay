@@ -23,6 +23,7 @@ server.views({
 });
 
 var plugins = [
+ {register: require('./routes/static-pages.js')},
   {register: require('./routes/users.js')},
   {register: require('./routes/session.js')},
   {//yar

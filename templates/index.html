@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/application.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/public/style.css">
+  <title>SwitchNPlay HK</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <p>SwitchNPlay</p>
+      </div>
+
+    </div>
+  </nav>
+  <div class="row">
+    <section class="container-fluid col-xs-12" id="landing_page">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1>SwitchNPlay HK</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        </p>
+      </div>
+      <div class="col-xs-6 col-xs-offset-3">
+        <input placeholder="game"></input>
+        <input placeholder="platform"></input>
+        <button id="submit_game">Find</button>
+      </div>
+    </section>
+  </div>
+  <div class="row" id="body">
+    <div class="container-fluid col-xs-12" id="signin_signup">
+
+      <section class="container col-xs-5 col-xs-offset-1" id="sign_up">
+        <h1>Join the community, today.</h1>
+        <p id="error_message"><i></i></p>
+        <form class="form" id="new_user_form">
+          <input placeholder="Username" id="username"></input>
+          <input placeholder="Email" id="email"></input>
+          <input type="password" placeholder="New password" id="password"></input>
+          <input placeholder="Location" id="location"></input>
+          <button id="submit_new_user">Sign up</button>
+        </form>
+      </section>
+
+      <section class="container col-xs-5" id="sign_in">
+        <h2>Already member? Sign In.</h2>
+        <form class="form" id="signin_form">
+          <input placeholder="Username" id="username_signin"></input>
+          <input type="password" placeholder="Password" id="password_signin"></input>
+          <button id="sign_in_user">Sign in</button>
+          <button id="sign_out_user">Test sign out</button>
+        </form>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>`

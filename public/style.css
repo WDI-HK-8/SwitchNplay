@@ -1,0 +1,94 @@
+html, body{
+  height:100%;
+  width: 100%;
+}
+#landing_page{
+  display: table;
+  position : relative;
+  width: 100%;
+  height: 500px;
+}
+#signin_signup{
+  display: table;
+  position : relative;
+  width: 100%;
+  height: 100%;
+}
+*{
+  font-style: Arial;
+}
+
+#body{
+  background-color: white;
+}
+
+.navbar {
+  padding:10px;
+  margin-bottom: 0px;
+  background-color: #B3E5FC;
+}
+.navbar img{
+  width: 30%;
+  height: 30%;
+  border-radius: 5px;
+}
+.navbar a{
+  padding:0px;
+}
+h1{
+  font-size: 40px;
+  margin-top: 60px;
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+#error_message{
+  color: red;
+}
+#sign_up{
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.form{
+  text-align: center;
+  padding: 20px;
+}
+
+.form input{
+  padding: 10px 70px;
+  border-radius: 5px;
+  border: solid 1px #03A9F4;
+  width: 300px;
+  display: block;
+  margin: 20px auto;
+  font-size: 20px;
+}
+
+.form button{
+  padding: 10px 70px;
+  border-radius: 5px;
+  width: 300px;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  background-color: #03A9F4;
+  border: solid 1px #03A9F4;
+  color: white;
+  font-size: 20px;
+}
+h2{
+  font-size: 40px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+#sign_in_user{
+  background-color: #1976D2;
+  border: solid 1px #1976D2;
+}
+
+

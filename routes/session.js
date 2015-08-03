@@ -48,7 +48,6 @@ exports.register = function(server, options, next){
         method:'GET',
         path:'/authenticated',
         handler: function(request,reply){
-          //usually we would write the logic here, but in this case we are =going to write it somewhere where we can use it agaiin for other functions
           var callback = function(result){
             reply(result);
           };
