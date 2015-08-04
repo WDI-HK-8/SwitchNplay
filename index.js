@@ -1,5 +1,5 @@
 var Hapi = require('hapi');
-var Path =require('path');
+var Path = require('path');
 
 var server = new Hapi.Server();
 
@@ -25,6 +25,7 @@ server.views({
 var plugins = [
  {register: require('./routes/static-pages.js')},
   {register: require('./routes/users.js')},
+  {register: require('./routes/games.js')},
   {register: require('./routes/session.js')},
   {//yar
     register: require('yar'),
