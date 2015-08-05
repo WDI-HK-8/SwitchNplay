@@ -41,7 +41,11 @@ Profile.prototype.signIn = function(username,password){
     },
     dataType: 'json',
     success: function(response){
+<<<<<<< HEAD
       console.log("cookie added / session added");
+=======
+      console.log("cookie added / session added", response);
+>>>>>>> master
     },
     error: function(response){
       console.log("error creating session");
@@ -52,9 +56,15 @@ Profile.prototype.signIn = function(username,password){
 Profile.prototype.signOut = function(){
   $.ajax({
     method: 'DELETE',
+<<<<<<< HEAD
     url: 'sessions',
     success: function(response){
       console.log('cookie deleted / user signed out');
+=======
+    url: '/sessions',
+    success: function(response){
+      console.log('cookie deleted / user signed out',response);
+>>>>>>> master
     },
     error: function(response){
       console.log('error deleting session');
@@ -62,6 +72,23 @@ Profile.prototype.signOut = function(){
   })
 };
 
+<<<<<<< HEAD
+=======
+Profile.prototype.addGame = function(){
+  $.ajax({
+    method: 'POST',
+    url: '/sessions/raf/games',
+    data: {
+      name: 'Fallout',
+      platform: 'PS4'
+    },
+    success: function(response){
+      console.log(response);
+    }
+  })
+};
+
+>>>>>>> master
 var profile = new Profile();
 
 $('form').submit(function(){

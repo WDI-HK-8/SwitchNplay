@@ -3,4 +3,8 @@ node_modules
 .DS_Store
 =======
 .DS_Store
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> user_route
 >>>>>>> master
