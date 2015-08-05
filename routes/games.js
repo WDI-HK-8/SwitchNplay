@@ -12,8 +12,9 @@ exports.register = function(server, options, next){
             var db = request.server.plugins['hapi-mongodb'].db;
             var game = request.payload.game;
             
-            var uniqGameInUser = {games:{ $in: {$and: [{name: game.name}, {platform: game.platform}]}}}; //Still cannot get it to find a specific game the games object
+            var uniqGameInUser = { $and: [{name: game.name}, {platform: game.platform}]}; //Still cannot get it to find a specific game the games object
             db.collection('users').count(uniqGameInUser, function(err, gameInUserExist){
+              return reply (gameInUserExist);
               if (!gameInUserExist){
                 db.collection('users').update({username: username},{$push:{games:game}}, {upsert: true}, function(err,writeResult){
                   if(err){

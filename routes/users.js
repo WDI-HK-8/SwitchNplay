@@ -56,6 +56,34 @@ exports.register = function(server, options, next){
       }
     }
   }
+  // {
+  //   method:'PATCH',
+  //   path:'/users/{username}',
+  //   // config:{
+  //     handler: function(request,reply){
+  //       var db = request.server.plugins['hapi-mongodb'].db;
+  //       var user = request.payload.user;
+  //       var username = request.params.username;
+  //       db.collection('users').update({username: username},{$set: {user} },function(err, writeResult){//error unexpected token {user}<-- ??????????
+  //         if(err){
+  //           return reply('Internal MongoDB error', err);
+  //         } else {
+  //           reply(username + ' modified successfully', writeResult);
+  //         }
+  //       });
+  //     }
+  //   // },
+  //   // validate:{
+  //   //   payload: {
+  //   //     user: {
+  //   //       username: Joi.any().forbidden(),
+  //   //       email: Joi.string().email().max(50),
+  //   //       password: Joi.string().min(5).max(20),
+  //   //       location: Joi.string()
+  //   //     }
+  //   //   }
+  //   // }
+  // }
   ]);
 
   next();
