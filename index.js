@@ -15,8 +15,25 @@ server.connection({
   }
 });
 
+server.views({
+  engines: {
+    html: require('handlebars')
+  },
+  path: Path.join(__dirname, 'templates') 
+});
+
 var plugins = [
   {register: require('./routes/users.js')},
+  {register: require('./routes/session.js')},
+  {//yar
+    register: require('yar'),
+    options: {
+      cookieOptions: {
+        password:'asdasdasd',
+        isSecure: false 
+      }
+    }
+  },
   {//Mongodb
     register: require('hapi-mongodb'),
     options:{
