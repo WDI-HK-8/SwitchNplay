@@ -16,6 +16,7 @@ server.connection({
 });
 
 var plugins = [
+  {register: require('./routes/users.js')},
   {//Mongodb
     register: require('hapi-mongodb'),
     options:{
@@ -35,7 +36,7 @@ server.register(plugins, function(err){
     throw err;
   }
   server.start(function(){
-    console.log('server running at : '+server.info.uri);
+    console.log('server running at : '+ server.info.uri);
   });
 
 
