@@ -10,6 +10,13 @@ server.route([
   },
   {
     method: 'GET',
+    path: '/main',
+    handler: function(request, reply){
+      reply.view('main');
+    }
+  },
+  {
+    method: 'GET',
     path: '/public/{path*}',
     handler: {
       directory: {

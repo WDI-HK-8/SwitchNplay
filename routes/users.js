@@ -1,5 +1,6 @@
 var Joi = require('joi');
 var Bcrypt = require('bcrypt');
+var Auth = require('./auth');
 //definition
 exports.register = function(server, options, next){
   server.route([
@@ -17,6 +18,24 @@ exports.register = function(server, options, next){
       });
     }//end handler GET
   },// end GET
+  {// GET ONE USER
+    method:'GET',
+    path:'/users/{user_id}',
+    handler: function(request, reply){
+      var callback = function(response){
+        var db = request.server.plugins['hapi-mongodb'].db;
+        var username = request.params.user_id;
+        db.collection('users').findOne({username: username}, function(err,user){
+          if (err){
+            return reply ('Internal MongoDB error', err);
+          }else{
+            reply(user);
+          }
+        });
+      }
+      Auth.authenticated(request, callback);
+    }
+  },
   {//POST
     method:'POST',
     path:'/users',
@@ -83,7 +102,27 @@ exports.register = function(server, options, next){
         }
       }
     }
-  }//end PATCH
+  },//end PATCH
+  {//DELETE
+    method: 'DELETE',
+    path:'/users/{username}',
+    handler: function(request,reply){
+      var callback = function(response){
+        if(result.authenticated){
+          var db = request.server.plugins['hapi-mongodb'].db;
+          
+          db.collection('users').remove({username:username}, function(err, writeResult){
+            if (err) { 
+              return reply('Internal MongoDB error', err); 
+            } else {
+              reply(username + ' has been deleted from the database', writeResult);
+            }
+          });
+        }
+      }
+    }
+  }//end DELETE
+
   ]);
 
   next();

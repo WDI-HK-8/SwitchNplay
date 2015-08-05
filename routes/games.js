@@ -50,7 +50,7 @@ exports.register = function(server, options, next){
         var games = db.collection('games').find({}).toArray();
         reply(games);
       }
-    }
+    },
   ]);
 
   next();

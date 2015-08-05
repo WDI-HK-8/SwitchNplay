@@ -1,0 +1,118 @@
+*{
+  font-family: 'Roboto';
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+.navbar{
+  background-color: #455A64;
+  border: 0px;
+  margin: 0px;
+  border-radius: 0px;
+}
+.navbar img{
+  height: 50%;
+  width: 50%;
+  padding: 10px;
+}
+h1{
+  text-align: center;
+  margin-top: 120px;
+  font-size: 50px;
+}
+#site_description{
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+#header {
+    position: relative;
+    background: #CFD8DC;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    color: #FFFFFF;
+}
+
+#header:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url('/public/assets/img/people.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#sign{
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+}
+#go{
+  padding: 10px 70px;
+  border-radius: 5px;
+  width: 300px;
+  display: block;
+  text-align: center;
+  margin: 50px auto;
+  background-color: #FF5722;
+  border: solid 1px #FF5722;
+  color: white;
+  font-size: 20px;
+}
+
+.form{
+  text-align: center;
+  padding: 20px;
+}
+
+h2{
+  padding-top: 50px;
+  text-align: center;
+}
+
+#error_message{
+  color: red;
+  text-align: center;
+}
+
+.form input{
+  padding: 10px 70px;
+  border-radius: 5px;
+  border: solid 1px #FF5722;
+  width: 300px;
+  display: block;
+  margin: 20px auto;
+  font-size: 20px;
+}
+
+.form button{
+  padding: 10px 70px;
+  border-radius: 5px;
+  width: 300px;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  background-color: #FF5722;
+  border: solid 1px #FF5722;
+  color: white;
+  font-size: 20px;
+}
+
+footer{
+  background-color: #CFD8DC;
+  height: 20px;
+}
