@@ -2,7 +2,16 @@ html, body{
   height:100%;
   width: 100%;
 }
+<<<<<<< HEAD
+#landing_page{
+  display: table;
+  position : relative;
+  width: 100%;
+  height: 500px;
+}
+=======
 
+>>>>>>> master
 #signin_signup{
   display: table;
   position : relative;
@@ -12,10 +21,14 @@ html, body{
 *{
   font-style: Arial;
 }
+<<<<<<< HEAD
+
+=======
 #signinsgnup{
   position: relative;
   float: left;
 }
+>>>>>>> master
 #body{
   background-color: white;
 }
