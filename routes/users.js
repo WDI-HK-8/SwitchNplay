@@ -1,5 +1,6 @@
 var Joi = require('joi');
 var Bcrypt = require('bcrypt');
+var Auth = require('./auth');
 //definition
 exports.register = function(server, options, next){
   server.route([
@@ -17,6 +18,25 @@ exports.register = function(server, options, next){
       });
     }//end handler GET
   },// end GET
+  {// GET ONE USER
+    method:'GET',
+    path:'/users/{id}',
+    handler: function(request, reply){
+      var callback = function(response){
+        var db = request.server.plugins['hapi-mongodb'].db;
+        var user_id = encodeURIComponent(request.params.id);
+        var ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
+        db.collection('users').findOne({_id: ObjectId(user_id) }, function(err,user){
+          if (err){
+            return reply ('Internal MongoDB error', err);
+          }else{
+            reply(user);
+          }
+        });
+      }
+      Auth.authenticated(request, callback);
+    }
+  },
   {//POST
     method:'POST',
     path:'/users',
@@ -83,7 +103,29 @@ exports.register = function(server, options, next){
         }
       }
     }
-  }//end PATCH
+  },//end PATCH
+  {//DELETE
+    method: 'DELETE',
+    path:'/users/{id}',
+    handler: function(request,reply){
+      var callback = function(response){
+        if(result.authenticated){
+          var user_id = encodeURIComponent(request.params.id);
+          var ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
+          var db = request.server.plugins['hapi-mongodb'].db;
+          
+          db.collection('users').remove({_id:ObjectId(user_id)}, function(err, writeResult){
+            if (err) { 
+              return reply('Internal MongoDB error', err); 
+            } else {
+              reply(username + ' has been deleted from the database', writeResult);
+            }
+          });
+        }
+      }
+    }
+  }//end DELETE
+
   ]);
 
   next();
