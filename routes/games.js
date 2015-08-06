@@ -2,28 +2,29 @@ var Auth = require('./auth');
 
 exports.register = function(server, options, next){
   server.route([
-    {
+    {//POST
       method: 'POST',
-      path:'/users/{username}/games',
+      path:'/users/{id}/games',
       handler: function(request,reply){
         var callback = function(result){
           if (result.authenticated){
-            var username = request.params.username;
+            var user_id = encodeURIComponent(request.params.id);
+            var ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
             var db = request.server.plugins['hapi-mongodb'].db;
             var game = request.payload.game;
             
             var uniqGameInUser = {'games.name': game.name, 'games.platform': game.platform};
             db.collection('users').count(uniqGameInUser, function(err, gameInUserExist){
               if (!gameInUserExist){
-                db.collection('users').update({username: username},{$push:{games:game}}, {upsert: true}, function(err,writeResult){
+                db.collection('users').update({_id: ObjectId(user_id)},{$push:{games:game}}, {upsert: true}, function(err,writeResult){
                   if(err){
                     return reply('Internal MongoDB error', err);
                   }else{
-                    reply(game.name + " on " + game.platform + " added to " + username + "'s library", writeResult);
+                    reply(game.name + " on " + game.platform + " added to your library", writeResult);
                   }
                 });
               } else {
-                return reply(username + ' has already listed '+ game.name + ' on ' + game.platform)
+                return reply('You have already listed '+ game.name + ' on ' + game.platform)
               }
             });
 
@@ -41,8 +42,8 @@ exports.register = function(server, options, next){
         };//end callback
         Auth.authenticated(request,callback);
       }//end handler
-    },
-    {
+    },//end POST
+    {//GET
       method:'GET',
       path: '/games',
       handler: function(request,reply){
@@ -50,7 +51,7 @@ exports.register = function(server, options, next){
         var games = db.collection('games').find({}).toArray();
         reply(games);
       }
-    },
+    }
   ]);
 
   next();

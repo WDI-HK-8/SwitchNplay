@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
 var Session = function(){
-
+  this.userId;
 }
 
 var Database = function(){
@@ -73,6 +73,7 @@ Session.prototype.displayMyGames = function(id){
     },
     error: function(response){
       console.log(response);
+
     }
   })
 };
@@ -97,6 +98,20 @@ Session.prototype.addGames = function(id,name,platform){
   })
 };
 
+Session.prototype.getUserId = function(){
+  $.ajax({
+    context: this,
+    method:'GET',
+    url:'/authenticated',
+    success: function(response){
+      console.log(response)
+      this.userId = response.user_id
+      console.log(this.userId);
+      return this.userId;
+    }
+  })
+};
+
 Database.prototype.displayDatabase = function() {
   $.ajax({
     context:this,
@@ -114,6 +129,7 @@ Database.prototype.displayDatabase = function() {
     },
     error: function(response){
       console.log(response);
+
     }
   })
 };
@@ -125,14 +141,17 @@ var displayUserSignedIn = function(){
 var session = new Session();
 var database = new Database();
 
+session.getUserId();
+
 $('#signout_button').click(function(){
   session.signOut();
 });
 
 $('#myprofile_button').click(function(){
   $('#database').hide();
-  session.displayMyProfile('raf');
-  session.displayMyGames('raf');
+  console.log(session.userId);
+  session.displayMyProfile(session.userId);
+  session.displayMyGames(session.userId);
   $('#content_myprofile').show();
 })
 
@@ -142,7 +161,7 @@ $('#add_new_game').click(function(){
   if (newGameName === "" || newPlatform === ""){
     return alert('Please input a name and a platform');
   }else{
-    session.addGames('raf',newGameName,newPlatform);
+    session.addGames(session.userId,newGameName,newPlatform);
   }
 })
 

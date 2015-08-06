@@ -20,12 +20,13 @@ exports.register = function(server, options, next){
   },// end GET
   {// GET ONE USER
     method:'GET',
-    path:'/users/{user_id}',
+    path:'/users/{id}',
     handler: function(request, reply){
       var callback = function(response){
         var db = request.server.plugins['hapi-mongodb'].db;
-        var username = request.params.user_id;
-        db.collection('users').findOne({username: username}, function(err,user){
+        var user_id = encodeURIComponent(request.params.id);
+        var ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
+        db.collection('users').findOne({_id: ObjectId(user_id) }, function(err,user){
           if (err){
             return reply ('Internal MongoDB error', err);
           }else{
@@ -105,13 +106,15 @@ exports.register = function(server, options, next){
   },//end PATCH
   {//DELETE
     method: 'DELETE',
-    path:'/users/{username}',
+    path:'/users/{id}',
     handler: function(request,reply){
       var callback = function(response){
         if(result.authenticated){
+          var user_id = encodeURIComponent(request.params.id);
+          var ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
           var db = request.server.plugins['hapi-mongodb'].db;
           
-          db.collection('users').remove({username:username}, function(err, writeResult){
+          db.collection('users').remove({_id:ObjectId(user_id)}, function(err, writeResult){
             if (err) { 
               return reply('Internal MongoDB error', err); 
             } else {

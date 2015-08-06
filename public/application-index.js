@@ -22,7 +22,7 @@ Profile.prototype.signUp = function(username,email,password,location){
       $('#email').val("");
       $('#password').val("");
       $('#location').val("");
-      window.location.href = "/main";
+      $('#error_message i').text('Successfully Signed In!');
     },
     error: function(response){
       console.log(response);
